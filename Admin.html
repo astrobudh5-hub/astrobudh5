@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AstroBudh Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="robots" content="noindex, nofollow">
+
+<style>
+body{
+  margin:0;
+  font-family:Poppins,Arial,sans-serif;
+  background:#050b1a;
+  color:#fff;
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+h1,h2{
+  color:#f5c16c;
+}
+.card{
+  background:#0d162e;
+  padding:25px;
+  border-radius:20px;
+  margin-bottom:25px;
+}
+input,button{
+  padding:12px;
+  border-radius:10px;
+  border:none;
+}
+input{
+  width:100%;
+  margin:8px 0;
+  background:#050b1a;
+  color:#fff;
+}
+button{
+  background:linear-gradient(90deg,#f5c16c,#1fbf8f);
+  font-weight:700;
+  cursor:pointer;
+}
+.hidden{display:none;}
+.service-row{
+  border-bottom:1px solid #222;
+  padding:15px 0;
+}
+.small{font-size:13px;color:#aaa;}
+img{
+  max-width:120px;
+  border-radius:10px;
+  margin-top:10px;
+}
+.logout{
+  float:right;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LOGIN -->
+<div class="card" id="loginBox">
+<h1>Admin Login</h1>
+<input type="password" id="pass" placeholder="Admin password">
+<button onclick="login()">Login</button>
+<p class="small">Frontend demo admin (browser-based)</p>
+</div>
+
+<!-- PANEL -->
+<div class="hidden" id="panel">
+
+<div class="card">
+<h1>AstroBudh Admin Panel</h1>
+<p class="small">
+Changes are stored in this browser only (localStorage).
+</p>
+<button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<div class="card">
+<h2>Add New Service</h2>
+<input id="newName" placeholder="Service Name">
+<input id="newPrice" type="number" placeholder="Price (USD)">
+<input id="newImg" placeholder="Image file name (example: service1.jpg)">
+<button onclick="addService()">Add Service</button>
+</div>
+
+<div class="card">
+<h2>Manage Services</h2>
+<div id="services"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+const PASSWORD = "Astro@2026";
+
+/* AUTH */
+function login(){
+  if(document.getElementById("pass").value === PASSWORD){
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("panel").classList.remove("hidden");
+    loadServices();
+  } else {
+    alert("Wrong password");
+  }
+}
+
+function logout(){
+  document.getElementById("panel").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.getElementById("pass").value="";
+}
+
+/* STORAGE */
+function getServices(){
+  return JSON.parse(localStorage.getItem("astroServices")) || [
+    {name:"Website Design",price:150,img:"service1.jpg"},
+    {name:"Resume Creation",price:30,img:"service2.jpg"},
+    {name:"Astro Logo Design",price:50,img:"service3.jpg"}
+  ];
+}
+
+function saveServices(data){
+  localStorage.setItem("astroServices",JSON.stringify(data));
+}
+
+/* UI */
+function loadServices(){
+  const box = document.getElementById("services");
+  box.innerHTML="";
+  let services = getServices();
+
+  services.forEach((s,i)=>{
+    box.innerHTML += `
+      <div class="service-row">
+        <strong>${s.name}</strong><br><br>
+        Price: $
+        <input type="number" value="${s.price}" onchange="updatePrice(${i},this.value)">
+        Image:
+        <input value="${s.img}" onchange="updateImg(${i},this.value)">
+        <br>
+        <img src="${s.img}" onerror="this.style.display='none'">
+        <br><br>
+        <button onclick="removeService(${i})">Remove</button>
+      </div>
+    `;
+  });
+}
+
+/* ACTIONS */
+function updatePrice(i,val){
+  let s=getServices();
+  s[i].price=parseInt(val)||0;
+  saveServices(s);
+}
+
+function updateImg(i,val){
+  let s=getServices();
+  s[i].img=val;
+  saveServices(s);
+  loadServices();
+}
+
+function removeService(i){
+  let s=getServices();
+  s.splice(i,1);
+  saveServices(s);
+  loadServices();
+}
+
+function addService(){
+  if(!newName.value || !newPrice.value) return alert("Fill all fields");
+  let s=getServices();
+  s.push({
+    name:newName.value,
+    price:parseInt(newPrice.value),
+    img:newImg.value || ""
+  });
+  saveServices(s);
+  newName.value=newPrice.value=newImg.value="";
+  loadServices();
+}
+</script>
+
+</body>
+</html>
