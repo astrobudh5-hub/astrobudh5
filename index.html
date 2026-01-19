@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AstroBudh Services | Astrology Driven Digital Growth</title>
+
+<meta name="description" content="AstroBudh provides astrology driven website design, resumes, branding, SEO, video editing and app planning for startups and creators worldwide.">
+<meta name="keywords" content="astrology business growth, astrology website design, resume services, startup branding, astro logo, digital services">
+<meta name="author" content="AstroBudh Services">
+<meta name="robots" content="index, follow">
+
+<style>
+:root{
+  --gold:#f5c16c;
+  --green:#1fbf8f;
+  --dark:#050b1a;
+  --card:#0d162e;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:Poppins,Arial,sans-serif;
+  background:radial-gradient(circle at top,#0f1f4a,#050b1a);
+  color:#ffffff;
+  line-height:1.6;
+}
+
+header{
+  text-align:center;
+  padding:90px 20px;
+}
+header img{
+  width:160px;
+  margin-bottom:20px;
+}
+header h1{
+  color:var(--gold);
+  font-size:3rem;
+}
+header p{
+  max-width:900px;
+  margin:15px auto;
+  color:#ddd;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  background:#050b1a;
+  padding:14px;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  z-index:100;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+section{
+  max-width:1200px;
+  margin:90px auto;
+  padding:0 20px;
+}
+section h2{
+  text-align:center;
+  color:var(--gold);
+  font-size:2.2rem;
+  margin-bottom:40px;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 20px;
+}
+.hero h2{
+  font-size:2.6rem;
+}
+.hero span{color:var(--green);}
+.hero p{
+  max-width:850px;
+  margin:20px auto;
+  color:#ccc;
+}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+.card{
+  background:var(--card);
+  padding:28px;
+  border-radius:22px;
+  box-shadow:0 0 40px rgba(0,0,0,.6);
+}
+.card h3{color:var(--gold);}
+.card p{color:#d0d0d0;}
+
+form{
+  max-width:600px;
+  margin:auto;
+  background:var(--card);
+  padding:35px;
+  border-radius:25px;
+}
+label{display:block;margin-top:15px;}
+input,select,textarea{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#050b1a;
+  color:#fff;
+  margin-top:8px;
+}
+button{
+  width:100%;
+  margin-top:25px;
+  padding:16px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(90deg,var(--gold),var(--green));
+  font-weight:800;
+  cursor:pointer;
+}
+
+.price{
+  margin-top:20px;
+  font-size:1.4rem;
+  color:var(--gold);
+}
+
+.small{
+  font-size:13px;
+  color:#aaa;
+  margin-top:10px;
+}
+
+footer{
+  text-align:center;
+  padding:50px 15px;
+  font-size:13px;
+  color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.png" alt="AstroBudh Logo">
+<h1>AstroBudh Services</h1>
+<p>
+Astrology-driven digital solutions designed to align branding,
+design and strategy with natural timing and human psychology
+to support startups and creators.
+</p>
+<p class="small">
+Astrology is used as a creative and strategic tool only. Results may vary.
+</p>
+</header>
+
+<nav>
+<a href="#services">Services</a>
+<a href="#order">Buy</a>
+<a href="#guidelines">Guidelines</a>
+<a href="#contact">Contact</a>
+<a href="Admin.html">Admin</a>
+</nav>
+
+<section class="hero">
+<h2>Astrology-Driven <span>Digital Growth</span></h2>
+<p>
+We blend design logic, AI assistance and astrology-inspired insights
+to help businesses present themselves with clarity and confidence.
+</p>
+</section>
+
+<section id="services">
+<h2>Our Services</h2>
+<div class="services">
+  <div class="card"><h3>Resume Building</h3><p>Professional, ATS-friendly resumes.</p></div>
+  <div class="card"><h3>Resume Templates</h3><p>Modern editable templates.</p></div>
+  <div class="card"><h3>Website Design</h3><p>Responsive, SEO-ready websites.</p></div>
+  <div class="card"><h3>Astro Logo Design</h3><p>Symbolic branding inspired by astrology.</p></div>
+  <div class="card"><h3>Video Editing & Reels</h3><p>High-retention social media edits.</p></div>
+  <div class="card"><h3>App Planning & UI</h3><p>We can even plan and design apps for you.</p></div>
+</div>
+</section>
+
+<section id="order">
+<h2>Place an Order</h2>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+<label>Select Service</label>
+<select id="service" name="Service" onchange="updatePrice()">
+  <option value="150">Website Design – $150</option>
+  <option value="30">Resume Creation – $30</option>
+  <option value="15">Resume Template – $15</option>
+  <option value="50">Astro Logo – $50</option>
+  <option value="300">App Planning – $300</option>
+</select>
+
+<label>Add-ons</label>
+<input type="checkbox" class="addon" value="40" onchange="updatePrice()"> SEO Optimization (+$40)<br>
+<input type="checkbox" class="addon" value="25" onchange="updatePrice()"> Fast Delivery (+$25)<br>
+<input type="checkbox" class="addon" value="20" onchange="updatePrice()"> Extra Revisions (+$20)
+
+<label>Your Email</label>
+<input type="email" name="Customer Email" required>
+
+<label>Project Details</label>
+<textarea name="Message" rows="4"></textarea>
+
+<input type="hidden" name="Total Price" id="totalPrice">
+
+<div class="price" id="priceDisplay">$150</div>
+
+<button type="submit">Confirm Order</button>
+
+<p class="small">
+This is an order request. Payment and execution start after confirmation.
+</p>
+
+</form>
+</section>
+
+<section id="guidelines">
+<h2>Service Guidelines</h2>
+<div class="card">
+<ul>
+<li>Services are provided on a best-effort basis.</li>
+<li>No guarantee is made regarding business growth or revenue.</li>
+<li>Astrology insights are interpretative and advisory.</li>
+<li>We may use AI tools to enhance efficiency and creativity.</li>
+<li>Client-provided content accuracy is the client’s responsibility.</li>
+<li>Results depend on multiple external factors.</li>
+<li>No compensation will be applicable if expectations differ.</li>
+<li>Digital performance varies across platforms.</li>
+<li>Services do not replace professional advice.</li>
+<li>By using services, you agree to these guidelines.</li>
+</ul>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p style="text-align:center;">📧 astrobudh.5@gmail.com</p>
+</section>
+
+<footer>
+© 2026 AstroBudh Services • Astrology Driven Digital Growth
+</footer>
+
+<script>
+function updatePrice(){
+  let base=parseInt(document.getElementById("service").value);
+  let addons=document.querySelectorAll(".addon");
+  let total=base;
+  addons.forEach(a=>{ if(a.checked) total+=parseInt(a.value); });
+  document.getElementById("priceDisplay").innerText="$"+total;
+  document.getElementById("totalPrice").value="$"+total;
+}
+</script>
+
+</body>
+</html>
